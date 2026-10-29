@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#17242c" />
+  <meta name="description" content="BoxSpaceOptimiser — a rule-aware 3D loading planner for vehicle screening, constrained packing, and late-order adaptation." />
+  <meta name="application-name" content="BoxSpaceOptimiser" />
+  <meta name="color-scheme" content="light" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="../assets/app-icon.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <title>BoxSpaceOptimiser — Rule-aware loading planner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      
+<a class="brand brand-home" href="#plannerView" aria-label="BoxSpaceOptimiser home">
+    <div class="brand-mark" aria-hidden="true">
+        <img src="../assets/favicon.svg" alt="" class="brand-icon">
+    </div>
+
+    <div>
+        <strong>BOXSPACE</strong>
+        <small>OPTIMISER / 01</small>
+    </div>
+</a>
+
+
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav-item active" data-view="planner"><span class="nav-icon">▦</span> Load planner <span class="nav-count">01</span></button>
+      <button class="nav-item" data-view="inventory"><span class="nav-icon">▤</span> Item master <span class="nav-count">02</span></button>
+      <button class="nav-item" data-view="activity"><span class="nav-icon">↗</span> Run history <span class="nav-count">03</span></button>
+      <div class="sidebar-bottom"><div class="status-dot"></div><div><strong>LOCAL DEMO MODE</strong><small>No backend required</small></div></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div><div class="eyebrow">ACE-IT LIVE BUSINESS CHALLENGE · JIIT NOIDA</div><h1>Load planning <span class="muted">/</span> <span id="headerView">Overview</span></h1></div><div class="top-actions"><span class="pill"><i></i> Prototype v0.1</span><button class="button button-quiet" id="resetBtn">Reset demo</button><button class="button button-primary" id="runTopBtn">▶ Generate plan</button></div></header>
+
+      <section class="view active" id="plannerView">
+        <div class="hero-row"><div><div class="eyebrow orange">SCREEN → PLAN → ADAPT</div><h2>Fit it right, <em>not just fit it.</em></h2><p class="hero-copy">A rule-aware loading planner that screens vehicles, lays out items in 3D, and checks whether late orders can fit.</p></div><div class="hero-stamp"><span class="stamp-big">144</span><span>UNITS IN<br />CURRENT MOVE</span><div class="stamp-line"></div><span class="stamp-small">36 SKUs · DEMO CASE</span></div></div>
+
+        <div class="metric-grid">
+          <article class="metric-card"><div class="metric-head">TOTAL LOAD VOLUME <span>↗</span></div><div class="metric-value" id="metricVolume">24.60 <small>m³</small></div><div class="metric-foot"><span class="mini-bar"><b style="width:68%"></b></span><span id="volumeFoot">67.7% of 20 ft</span></div></article>
+          <article class="metric-card"><div class="metric-head">TOTAL WEIGHT <span>↗</span></div><div class="metric-value" id="metricWeight">2,495 <small>kg</small></div><div class="metric-foot"><span class="status-tag good">PAYLOAD OK</span><span id="weightFoot">33.3% used</span></div></article>
+          <article class="metric-card"><div class="metric-head">VEHICLE DECISION <span>↗</span></div><div class="metric-value metric-text" id="metricVehicle">20 ft <small>container</small></div><div class="metric-foot"><span class="status-tag warn">VOLUME IS BINDING</span></div></article>
+          <article class="metric-card"><div class="metric-head">LATE-ORDER RESERVE <span>↗</span></div><div class="metric-value" id="metricLate">8 <small>units</small></div><div class="metric-foot"><span class="status-tag neutral">4.7% OF LOAD VOLUME</span></div></article>
+        </div>
+
+        <div class="section-heading"><div><div class="eyebrow">01 / SCREEN</div><h3>Choose a vehicle</h3></div><span class="section-note">Volume + payload gate · indicative dimensions</span></div>
+        <div class="vehicle-grid" id="vehicleGrid"></div>
+
+        <div class="workspace-grid">
+          <section class="panel layout-panel"><div class="panel-head"><div><div class="eyebrow">02 / PLAN</div><h3>Loading layout</h3></div><div class="panel-head-actions"><span class="live-badge"><i></i> HEURISTIC PACKER</span><div class="view-switch" role="group" aria-label="Loading view"><button class="button button-small" id="topViewBtn" type="button">▦ Top</button><button class="button button-small active" id="threeDViewBtn" type="button">◇ 3D view</button></div><button class="button button-small" id="exportPlanBtn">↓ Export plan</button></div></div>
+            <div class="layout-meta"><div><span class="meta-label">VEHICLE</span><strong id="layoutVehicle">20 ft container</strong></div><div><span class="meta-label">PLACED</span><strong id="placedCount">—</strong></div><div><span class="meta-label">PACKING STATUS</span><strong id="packingStatus" class="status-text">Not generated</strong></div></div>
+            <div class="canvas-wrap"><canvas id="layoutCanvas" width="1000" height="520" aria-label="Interactive 3D loading layout"></canvas><div class="canvas-overlay" id="canvasOverlay"><div class="overlay-symbol">▦</div><strong>Awaiting loading plan</strong><span>Generate a plan to see the placement map.</span></div></div>
+            <div class="camera-controls" id="cameraControls">
+              <div class="camera-control-title"><strong>3D CAMERA</strong><span>Drag the model to orbit · scroll to zoom</span></div>
+              <label class="camera-range"><span>ORBIT <b id="cameraAngleValue">035°</b></span><input id="cameraAngle" type="range" min="0" max="350" step="1" value="35" /></label>
+              <label class="camera-range"><span>ELEVATION <b id="cameraElevationValue">25°</b></span><input id="cameraElevation" type="range" min="8" max="65" step="1" value="25" /></label>
+              <button class="button button-small" id="resetCameraBtn" type="button">↺ Reset camera</button>
+            </div>
+            <div class="legend"><span><i class="legend-box legend-normal"></i> Standard</span><span><i class="legend-box legend-fragile"></i> Fragile</span><span><i class="legend-box legend-upright"></i> Upright-only</span><span><i class="legend-box legend-late"></i> Late item</span><span class="legend-note" id="legendNote">3D view · click a box to inspect it</span></div>
+            <div class="box-inspector" id="boxInspector"><span class="inspector-kicker">BOX INSPECTOR</span><strong>No box selected</strong><span>Generate a plan, then click any visible box to see its SKU, dimensions and coordinates.</span></div><div class="plan-summary" id="planSummary"><div><span class="summary-icon">↳</span><span>Generate a plan to see the placement summary.</span></div></div>
+          </section>
+
+          <section class="panel adapt-panel"><div class="panel-head"><div><div class="eyebrow">03 / ADAPT</div><h3>Late-order simulator</h3></div><span class="late-badge">LIVE TEST</span></div><p class="panel-copy">Add a rush item and check whether the current arrangement can absorb it without breaking constraints.</p>
+            <label class="field-label" for="lateSku">ITEM</label><select id="lateSku" class="field"></select>
+            <div class="field-row"><div><label class="field-label" for="lateQty">QUANTITY</label><input id="lateQty" class="field" type="number" min="1" max="20" value="2" /></div><div><label class="field-label" for="lateWeight">URGENCY</label><select id="lateUrgency" class="field"><option>Standard</option><option selected>Rush order</option><option>Critical</option></select></div></div>
+            <button class="button button-primary full-width" id="testLateBtn">＋ Test late order</button>
+            <div class="divider"></div><div class="reserve-meter-head"><span>Reserved planning buffer</span><strong id="bufferValue">8%</strong></div><input id="bufferSlider" type="range" min="0" max="20" value="8" /><div class="range-labels"><span>0% · max fill</span><span>20% · more slack</span></div>
+            <div class="late-result" id="lateResult"><div class="result-icon">↗</div><div><strong>Ready to stress-test</strong><p>Generate a base plan, then test an incoming item.</p></div></div>
+          </section>
+        </div>
+
+        <section class="panel bottom-panel"><div class="panel-head"><div><div class="eyebrow">VALIDATION</div><h3>Constraint checks</h3></div><span class="section-note">Checks are shown transparently; this is a planning prototype, not a certified safety system.</span></div><div class="checks-grid" id="checksGrid"><div class="check-item pending"><span>○</span><div><strong>Vehicle boundaries</strong><small>Run the packer to validate placements</small></div></div><div class="check-item pending"><span>○</span><div><strong>Orientation rules</strong><small>Waiting for plan</small></div></div><div class="check-item pending"><span>○</span><div><strong>Stacking / support</strong><small>Waiting for plan</small></div></div><div class="check-item pending"><span>○</span><div><strong>Payload limit</strong><small>Waiting for plan</small></div></div></div></section>
+        <footer>BOXSPACEOPTIMISER <span>·</span> Decision support prototype <span>·</span> Sample data is illustrative and must be validated against real shipment records.</footer>
+      </section>
+
+      <section class="view" id="inventoryView"><div class="section-heading inventory-title"><div><div class="eyebrow">DATA / 01</div><h3>Item master</h3><p class="hero-copy">Edit sample SKU dimensions, weight and handling rules. Changes are used in the next plan run.</p></div><div class="inventory-actions"><button class="button button-quiet" id="downloadCsvBtn">↓ Download CSV</button><label class="button button-primary upload-label">↑ Import CSV<input type="file" id="uploadCsv" accept=".csv,text/csv" hidden /></label></div></div><div class="inventory-toolbar"><div class="search-wrap"><span>⌕</span><input id="skuSearch" placeholder="Search SKU or item name..." /></div><span class="section-note" id="inventoryCount">36 SKUs · 144 units</span></div><div class="table-wrap"><table class="data-table"><thead><tr><th>SKU / ITEM</th><th>QTY</th><th>L × W × H (CM)</th><th>KG / UNIT</th><th>ORIENTATION</th><th>FRAGILE</th><th>STACKABLE</th></tr></thead><tbody id="inventoryBody"></tbody></table></div><div class="table-hint">Tip: double-click a dimension or weight cell to edit. Press Enter to save, Esc to cancel.</div></section>
+
+      <section class="view" id="activityView"><div class="section-heading"><div><div class="eyebrow">AUDIT / 01</div><h3>Run history</h3><p class="hero-copy">Every generated plan and late-order test appears here for the demo session.</p></div><button class="button button-quiet" id="clearHistoryBtn">Clear history</button></div><div class="panel history-panel"><div class="history-list" id="historyList"><div class="empty-history"><div>↻</div><strong>No runs yet</strong><span>Generate a plan to record the first run.</span></div></div></div></section>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
