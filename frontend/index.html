@@ -10,7 +10,7 @@
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
   <link rel="apple-touch-icon" href="./assets/app-icon.svg" />
   <link rel="manifest" href="manifest.webmanifest" />
-  <title>BoxSpaceOptimiser — Rule-aware loading planner</title>
+  <title>BoxSpaceOptimiser - Rule-aware loading planner</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -24,7 +24,7 @@
 
     <div>
         <strong>BOXSPACE</strong>
-        <small>OPTIMISER / 01</small>
+        <small>OPTIMISER : 01</small>
     </div>
 </a>
 
@@ -33,7 +33,7 @@
       <button class="nav-item active" data-view="planner"><span class="nav-icon">▦</span> Load planner <span class="nav-count">01</span></button>
       <button class="nav-item" data-view="inventory"><span class="nav-icon">▤</span> Item master <span class="nav-count">02</span></button>
       <button class="nav-item" data-view="activity"><span class="nav-icon">↗</span> Run history <span class="nav-count">03</span></button>
-      <div class="sidebar-bottom"><div class="status-dot"></div><div><strong>DEMO MODE</strong><small></div></div>
+      <div class="sidebar-bottom"><div class="status-dot"></div><div><strong>ACTIVE</strong><small></div></div>
     </aside>
 
     <main class="main-content">
@@ -49,7 +49,7 @@
           <article class="metric-card"><div class="metric-head">LATE-ORDER RESERVE <span>↗</span></div><div class="metric-value" id="metricLate">8 <small>units</small></div><div class="metric-foot"><span class="status-tag neutral">4.7% OF LOAD VOLUME</span></div></article>
         </div>
 
-        <div class="section-heading"><div><div class="eyebrow">01 / SCREEN</div><h3>Choose a vehicle</h3></div><span class="section-note">Volume + payload gate · indicative dimensions</span></div>
+        <div class="section-heading"><div><div class="eyebrow">01 / SCREEN</div><h3>Choose a vehicle</h3></div><span class="section-note"></span></div>
         <div class="vehicle-grid" id="vehicleGrid"></div>
 
         <div class="workspace-grid">
@@ -75,8 +75,8 @@
           </section>
         </div>
 
-        <section class="panel bottom-panel"><div class="panel-head"><div><div class="eyebrow">VALIDATION</div><h3>Constraint checks</h3></div><span class="section-note">Checks are shown transparently; this is a planning prototype, not a certified safety system.</span></div><div class="checks-grid" id="checksGrid"><div class="check-item pending"><span>○</span><div><strong>Vehicle boundaries</strong><small>Run the packer to validate placements</small></div></div><div class="check-item pending"><span>○</span><div><strong>Orientation rules</strong><small>Waiting for plan</small></div></div><div class="check-item pending"><span>○</span><div><strong>Stacking / support</strong><small>Waiting for plan</small></div></div><div class="check-item pending"><span>○</span><div><strong>Payload limit</strong><small>Waiting for plan</small></div></div></div></section>
-        <footer>BOXSPACEOPTIMISER <span>·</span> Decision support prototype <span>·</span> Sample data is illustrative and must be validated against real shipment records.</footer>
+        <section class="panel bottom-panel"><div class="panel-head"><div><div class="eyebrow">VALIDATION</div><h3>Constraint checks</h3></div><span class="section-note"></span></div><div class="checks-grid" id="checksGrid"><div class="check-item pending"><span>○</span><div><strong>Vehicle boundaries</strong><small>Run the packer to validate placements</small></div></div><div class="check-item pending"><span>○</span><div><strong>Orientation rules</strong><small>Waiting for plan</small></div></div><div class="check-item pending"><span>○</span><div><strong>Stacking / support</strong><small>Waiting for plan</small></div></div><div class="check-item pending"><span>○</span><div><strong>Payload limit</strong><small>Waiting for plan</small></div></div></div></section>
+        <footer>C 2026 <span>·</span> Team AGILE <span>·</span> Made with Brain</footer>
       </section>
 
       <section class="view" id="inventoryView"><div class="section-heading inventory-title"><div><div class="eyebrow">DATA / 01</div><h3>Item master</h3><p class="hero-copy">Edit sample SKU dimensions, weight and handling rules. Changes are used in the next plan run.</p></div><div class="inventory-actions"><button class="button button-quiet" id="downloadCsvBtn">↓ Download CSV</button><label class="button button-primary upload-label">↑ Import CSV<input type="file" id="uploadCsv" accept=".csv,text/csv" hidden /></label></div></div><div class="inventory-toolbar"><div class="search-wrap"><span>⌕</span><input id="skuSearch" placeholder="Search SKU or item name..." /></div><span class="section-note" id="inventoryCount">36 SKUs · 144 units</span></div><div class="table-wrap"><table class="data-table"><thead><tr><th>SKU / ITEM</th><th>QTY</th><th>L × W × H (CM)</th><th>KG / UNIT</th><th>ORIENTATION</th><th>FRAGILE</th><th>STACKABLE</th></tr></thead><tbody id="inventoryBody"></tbody></table></div><div class="table-hint">Tip: double-click a dimension or weight cell to edit. Press Enter to save, Esc to cancel.</div></section>
