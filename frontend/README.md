@@ -1,4 +1,4 @@
-# BoxSpaceOptimiser — Prototype
+# BoxSpaceOptimiser — Prototype (DEMO ONLYYY (For full product use backend locally))
 
 A self-contained browser prototype for the ACE-IT Live Business Challenge. Built with plain HTML, CSS and JavaScript; no build step, package installation, API key or backend is required.
 
