@@ -1,0 +1,6 @@
+case_id,container_L_cm,container_W_cm,container_H_cm,payload_kg,item_qty,item_L_cm,item_W_cm,item_H_cm,stackable,max_stack_kg,item_weight_kg,expected_placed_units
+GRID-10,500,200,120,10000,10,100,100,100,0,0,10,10
+GRID-06,300,200,120,10000,6,100,100,100,0,0,10,6
+GRID-08,400,200,150,10000,8,100,100,120,0,0,10,8
+STACK-02,100,100,200,1000,2,100,100,100,1,30,10,2
+STACK-LIMIT,100,100,200,1000,2,100,100,100,1,5,10,1

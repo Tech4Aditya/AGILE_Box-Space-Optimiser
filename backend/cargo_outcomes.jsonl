@@ -1,0 +1,2 @@
+{"item": {"id": "SKU-007-01", "sku": "SKU-007", "name": "Fragile floor lamp", "x": 440, "y": 175, "z": 0, "l": 35, "w": 35, "h": 160, "weight": 18, "fragile": true, "stackable": false, "maxStackKg": 0, "supportId": null, "orientation": "upright", "loadAbove": 0}, "damaged": 1}
+{"item": {"id": "SKU-007-01", "sku": "SKU-007", "name": "Fragile floor lamp", "x": 440, "y": 175, "z": 0, "l": 35, "w": 35, "h": 160, "weight": 18, "fragile": true, "stackable": false, "maxStackKg": 0, "supportId": null, "orientation": "upright", "loadAbove": 0}, "damaged": 0}

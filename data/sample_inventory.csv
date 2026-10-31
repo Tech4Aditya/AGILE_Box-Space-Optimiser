@@ -1,0 +1,13 @@
+sku,name,qty,length_cm,width_cm,height_cm,weight_kg_each,orientation,fragile,stackable,max_stack_kg,late
+SKU-001,Standard carton S,24,40,30,25,8,any,0,1,120,0
+SKU-002,Standard carton M,20,60,40,35,14,any,0,1,120,0
+SKU-003,Standard carton L,16,80,50,45,22,upright,0,1,180,0
+SKU-004,Upright appliance,10,70,60,150,48,upright,0,0,0,0
+SKU-005,Fragile glass unit,8,55,45,90,18,upright,1,0,0,0
+SKU-006,Flat treadmill,1,160,75,35,90,flat,0,0,0,1
+SKU-007,Fragile floor lamp,1,35,35,160,18,upright,1,0,0,1
+SKU-008,Plastic crate,18,50,40,30,9,any,0,1,120,0
+SKU-009,Metal component,12,45,35,25,28,any,0,1,120,0
+SKU-010,Long panel,8,120,40,12,16,flat,0,0,0,0
+SKU-011,Small accessory box,16,30,25,20,5,any,0,1,120,0
+SKU-012,Heavy equipment case,10,65,55,55,42,upright,0,1,180,0

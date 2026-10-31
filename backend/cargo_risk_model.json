@@ -1,0 +1,1 @@
+{"weights": [-3.796203311811515, 3.4151144243478857, 1.2577631475330748, 1.313719831167822, 1.0545717225813835], "features": ["bias", "fragile", "weight_scaled", "height_ratio_scaled", "not_stackable"], "training_samples": 5000, "epochs": 900, "validation_note": "Synthetic validation only; not real-world incident accuracy."}
